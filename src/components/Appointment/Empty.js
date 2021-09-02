@@ -2,7 +2,7 @@
 
 
 import React from "react";
-import "components/Appointment/styles.scss"
+import "components/Appointment/styles.scss";
 
 const Empty = function(props) {
   const { onAdd } = props;
