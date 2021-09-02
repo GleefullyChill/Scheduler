@@ -3,7 +3,7 @@
 
 import React from "react";
 
-import "components/InterviewListItem.scss"
+import "components/InterviewerListItem.scss"
 
 const InterviewerListItem = function(props) {
   const { id, name, avatar, selected, setInterviewer } = props;
