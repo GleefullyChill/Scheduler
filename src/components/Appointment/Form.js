@@ -25,7 +25,7 @@ const Form = function(props) {
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
-        <form autoComplete="off">
+        <form autoComplete="off" onSubmit={event => event.preventDefault()}>
           <input
             className="appointment__create-input text--semi-bold"
             name={props.name}
@@ -33,9 +33,9 @@ const Form = function(props) {
             type="text"
             placeholder="Enter Student Name"
             onChange={(event) => {
+              event.preventDefault()
               setName(event.target.value);
             }}
-            onSubmit={event => event.preventDefault()}
             /*
               This must be a controlled component
             */
@@ -43,8 +43,8 @@ const Form = function(props) {
         </form>
         <InterviewerList
         interviewers={interviewers}
-        value={interviewer}
-        onChange={(event) => setInterviewer(interviewer.id)} />
+        interviewer={interviewer}
+        onChange={setInterviewer} />
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">

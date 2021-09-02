@@ -7,9 +7,10 @@ import "components/InterviewerList.scss"
 
 const InterviewerList = function(props) {
 
-  const { interviewers, interviewer, onChange } = props;
+  const { interviewers, interviewer } = props;
 
   const interviewerItems = interviewers.map(interviewerItem => {
+    const onChange = () => props.onChange(interviewerItem.id);
     return (
       <InterviewerListItem 
         key={interviewerItem.id}
