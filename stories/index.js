@@ -121,14 +121,14 @@ storiesOf("InterviewerList", module)
   .add("Initial", () => (
     <InterviewerList
       interviewers={interviewers}
-      setInterviewer={action("setInterviewer")}
+      onChange={action("onChange")}
     />
   ))
   .add("Preselected", () => (
     <InterviewerList
       interviewers={interviewers}
       interviewer={3}
-      setInterviewer={action("setInterviewer")}
+      onChange={action("onChange")}
     />
   ));
 
@@ -203,7 +203,7 @@ storiesOf("Form", module)
     .add("Edit", () => (
       <Form
       name="Lydia Miller-Jones"
-      interviewer={interviewer}
+      interviewer={interviewer.id}
       interviewers={interviewers}
       onSave={action("onSave")}
       onCancel={action("onCancel")}
