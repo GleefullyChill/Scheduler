@@ -5,12 +5,13 @@ import React from "react";
 
 const DayList = function(props) {
   const days = props.days.map(day => {
-     return <DayListItem
+  const setDayClick = () => props.setDay(day.name);
+  return <DayListItem
     key={day.id}
     name={day.name}
     spots={day.spots}
     selected={day.name === props.day}
-    setDay={props.setDay} />
+    setDayClick={setDayClick} />
   })
   return (
     <ul>
