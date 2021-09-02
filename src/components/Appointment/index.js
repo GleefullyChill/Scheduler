@@ -3,23 +3,20 @@
 
 import React from "react";
 
-import "components/Appointment/styles.scss";
 import Header from "components/Appointment/Header";
 import Empty from "components/Appointment/Empty";
 import Show from "components/Appointment/Show";
-import Confirm from "components/Appointment/Confirm";
 
+import "components/Appointment/styles.scss";
 
 const Appointment = function(props) {
-  const { student, interviewer, message, onAdd, onEdit, onDelete, onConfirm, onCancel } = props;
+  const { time, interview, student, interviewer, onAdd, onEdit, onDelete } = props;
  
 
   return (
     <article className="appointment">
-      <Header time=""/>
-      <Empty onAdd={onAdd} />
-      <Show student={student} interviewer={interviewer} onDelete={onDelete} onEdit={onEdit} />
-      <Confirm message={message} onConfirm={onConfirm} onCancel={onCancel} />
+      <Header time={ time } />
+      { interview ? <Show student={student} interviewer={interviewer} onDelete={onDelete} onEdit={onEdit} /> : <Empty onAdd={onAdd} /> }
     </article>
   );
 }
