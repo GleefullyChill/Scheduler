@@ -33,7 +33,7 @@ storiesOf("Button", module)
   .add("Selected", () => <DayListItem name="Monday" spots={5} selected />) 
   .add("Full", () => <DayListItem name="Monday" spots={0} />)
   .add("Clickable", () => (
-    <DayListItem name="Tuesday" setDay={action("setDay")} spots={5} /> // action() allows us to create a callback that appears in the actions panel when clicked
+    <DayListItem name="Tuesday" onChange={event => action("onChange")("Tuesday")} spots={5} /> // action() allows us to create a callback that appears in the actions panel when clicked
   ));
 const days = [
   {
@@ -93,7 +93,7 @@ storiesOf("InterviewerListItem", module)
       id={interviewer.id}
       name={interviewer.name}
       avatar={interviewer.avatar}
-      setInterviewer={event => action("setInterviewer")(interviewer.id)}
+      onChange={event => action("onChange")(interviewer.id)}
     />
   ));
 const interviewers = [
