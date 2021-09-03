@@ -1,13 +1,13 @@
 
 
-const getAppointmentsForDay = function(states, day) {
+const getAppointmentsForDay = function(state) {
   let appointmentsForDay;
 
-  for (const stateOfDay of states.days) {
-    if (stateOfDay.name === day) {
-      appointmentsForDay = stateOfDay.appointments.map(id => {
+  for (const daysOfState of state.days) {
+    if (daysOfState.name === state.day) {
+      appointmentsForDay = daysOfState.appointments.map(id => {
         
-        return states.appointments[id];
+        return state.appointments[id];
       })
       return appointmentsForDay;
     }

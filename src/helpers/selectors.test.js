@@ -27,7 +27,8 @@ const state = {
       time: "4pm",
       interview: { student: "Chad Takahashi", interviewer: 2 }
     }
-  }
+  },
+  day: "Tuesday"
 };
 
 test("getAppointmentsForDay returns an array", () => {
