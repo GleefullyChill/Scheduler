@@ -17,36 +17,36 @@ export default function Application(props) {
     days: [],
     appointments: {}
   })
-  const appointments = [];
+  const dailyAppointments = getAppointmentsForDay(state, state.day);
   const setDay = function(day) {
     setState({...state, day})
   }
   //get requests here or in another file, never under
   useEffect(() => {
-    axios.get("/api/days")
-      .then((res) => {
-        setState({...state, days: res.data})
+    Promise.all([
+      axios.get("/api/days"),
+      axios.get("/api/appointments")
+    ]).then((res) => {
+        setState({...state, appointments:res[1].data, days: res[0].data})
       })
       .catch((error) => {
         console.log(error.response);
       })
   },[])
 
-  useEffect(() => {
-    axios.get("/api/appointments")
-      .then((res) => {
-        setState({...state, appointments: res.data})
-      })
-      .then(() => {
-        appointments.push(getAppointmentsForDay(state))
-      })
-      .catch((error) => {
-        console.log(error.response);
-      })
-  },[])
+  // useEffect(() => {
+  //   axios.get("/api/appointments")
+  //     .then((res) => {
+  //       setState({...state, appointments: res.data})
+  //     })
+  //     
+  //     .catch((error) => {
+  //       console.log(error.response);
+  //     })
+  // },[])
   
 
-  const appointmentsArray = appointments.map(appointmentItem => {
+  const appointmentsArray = dailyAppointments.map(appointmentItem => {
     return <Appointment key={appointmentItem.id} {...appointmentItem} />
   })
 
