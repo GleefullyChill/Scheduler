@@ -9,7 +9,7 @@ export default function DayListItem(props) {
     "--selected": selected,
     "--full": (spots === 0)
   })
-  
+ 
   return (
     <li onClick={onChange} className={dayClass}>
       <h2 className="text--regular">{name}</h2> 

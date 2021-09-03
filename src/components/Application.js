@@ -8,72 +8,32 @@ import Appointment from "./Appointment";
 
 
 
-const appointmentResults = [
-  {
-    id: 1,
-    time: "12pm",
-  },
-  {
-    id: 2,
-    time: "1pm",
-    interview: {
-      student: "Lydia Miller-Jones",
-      interviewer: {
-        id: 1,
-        name: "Sylvia Palmer",
-        avatar: "https://i.imgur.com/LpaY82x.png",
-      }
-    }
-  },
-  {
-    id: 3,
-    time: "2pm",
-  },
-  {
-    id: 4,
-    time: "3pm",
-    interview: {
-      student: "Milkshake Christina",
-      interviewer: {
-        id: 2,
-        name: "Davide Palmer",
-        avatar: "https://i.imgur.com/Nmx0Qxo.png",
-      }
-    }
-  },
-  {
-    id: 5,
-    time: "4pm",
-  },
-  {
-    id: 6,
-    time: "5pm",
-    interview: {
-      student: "Haters gonna Hate",
-      interviewer: {
-        id: 4,
-        name: "Josh Palmer",
-        avatar: "https://i.imgur.com/FK8V841.jpg",
-      }
-    }
-  }
-];
-
 export default function Application(props) {
 
   //relating useState defined before used
   const [days, setDays] = useState([]);
+  const [appointmentResults, setAppointmentResults] = useState([]);
 
   //get requests here or in another file, never under
   useEffect(() => {
     axios.get("/api/days")
-      .then((res) => setDays(res))
-      .catch((error) => {
-        console.log(error.response.status);
-        console.log(error.response.headers);
-        console.log(error.response.data);
+      .then((res) => {
+        setDays(res.data)
       })
-  })
+      .catch((error) => {
+        console.log(error.response);
+      })
+  },[days])
+
+  useEffect(() => {
+    axios.get("/api/appointments")
+      .then((res) => {
+        console.log(res.data)
+      })
+      .catch((error) => {
+        console.log(error.response);
+      })
+  },[appointmentResults])
   
 
 
