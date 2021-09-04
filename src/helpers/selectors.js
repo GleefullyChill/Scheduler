@@ -15,4 +15,19 @@ const getAppointmentsForDay = function(states, day) {
   return (appointmentsForDay ? appointmentsForDay : []); 
 }
 
-export { getAppointmentsForDay }
+const getInterview = function(state, interviewData) {
+  let interview = null;
+  
+  if (interviewData) {
+    interview = { 
+        student: interviewData.student,
+      interviewer: state.interviewers[interviewData.interviewer]
+    }
+  
+    return interview;
+  }
+  return interview;
+}
+
+
+export { getAppointmentsForDay, getInterview }
