@@ -6,39 +6,32 @@ const useVisualMode = function (initial) {
   
   function transition(newMode, replace = false) {
 
-    setHistory(prev => {
-      return [newMode, ...prev]
-    })
-    setnewMode(prev => {
+    if (!replace) {
+      setHistory(prev => {
+        return [...prev, newMode]
+      })
+    } else {
+      setHistory(prev => {
+        return [...prev.slice(0, prev.length - 1), newMode];
+      })
+    }
+    setMode(prev => {
       return newMode
     });
-    console.log(mode)
-    return (mode, history)
   }
   
-  // const back = function() {
-  //   setHistory(prev => {
-  //     setMode([...prev][0])
-  //     return [...prev.slice(1)]
-  //   })
-  //   console.log(history);
-  // }
-  return {mode, transition};
+  const back = function() {
+    if (history.length === 1) {
+      return;
+    }
+    setMode(history.slice( - 2)[0])
+    setHistory(prev => {
+      return [...prev].slice(0, history.length -1)
+    })
+    
+  }
+  return {mode, transition, back};
 }
 
 export default useVisualMode;
 
-
-
-// function transition(mode, replace=false) {
-//   if (!replace) {
-//      setHistory(prev => {
-//         return [...prev, mode]
-//       })
-//    } else {
-//      setHistory(prev => {
-//         return [...prev.slice(0, prev.length - 1), mode];
-//     })
-//   }
-// }
-// return {transition}
