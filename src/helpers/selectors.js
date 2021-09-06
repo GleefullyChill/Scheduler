@@ -1,13 +1,13 @@
 
 
-const getAppointmentsForDay = function(states, day) {
+const getAppointmentsForDay = function(state, day) {
   let appointmentsForDay;
 
-  for (const daysOfState of states.days) {
+  for (const daysOfState of state.days) {
     if (daysOfState.name === day) {
       appointmentsForDay = daysOfState.appointments.map(id => {
         
-        return states.appointments[id];
+        return state.appointments[id];
       })
       return appointmentsForDay;
     }
@@ -29,5 +29,24 @@ const getInterview = function(state, interviewData) {
   return interview;
 }
 
+const getInterviewsForDay = function(state, day) {
+  let interviewsForDay;
 
-export { getAppointmentsForDay, getInterview }
+  for (const daysOfState of state.days) {
+    if (daysOfState.name === day) {
+      interviewsForDay = daysOfState.appointments.map(id => {
+
+        const interview = getInterview(state, state.appointments[id].interview)
+        const interviewOfAppointment = {...state.appointments[id], interview}
+
+        return interviewOfAppointment;
+      
+      })
+      return interviewsForDay;
+    }
+  }
+  return (interviewsForDay ? interviewsForDay : []); 
+}
+
+
+export { getAppointmentsForDay, getInterviewsForDay, getInterview }
