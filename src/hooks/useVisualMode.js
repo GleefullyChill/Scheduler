@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import {useState} from "react";
 
 const useVisualMode = function (initial) {
   const [mode, setMode] = useState(initial);
