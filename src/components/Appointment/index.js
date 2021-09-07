@@ -8,6 +8,7 @@ import Empty from "components/Appointment/Empty";
 import Show from "components/Appointment/Show";
 import Status from "components/Appointment/Status";
 import Error from "components/Appointment/Error";
+import Confirm from "components/Appointment/Confirm";
 import useVisualMode from "hooks/useVisualMode";
 import Form from "./Form";
 
@@ -17,7 +18,7 @@ import "components/Appointment/styles.scss";
 
 
 const Appointment = function(props) {
-  const { time, interview, interviewers, bookInterview, id } = props;
+  const { time, interview, interviewers, cancelInterview, bookInterview, id } = props;
 
   
 
@@ -26,6 +27,8 @@ const Appointment = function(props) {
   const CREATE = "CREATE";
   const SAVING = "SAVING";
   const PROBLEM = "PROBLEM";
+  const CONFIRM = "COMFIRM";
+  const DELETING = "DELETING";
   const { mode, transition, back } = useVisualMode(interview ? SHOW : EMPTY);
 
   function save(name, interviewer) {
@@ -43,6 +46,17 @@ const Appointment = function(props) {
       })
       .catch(() => transition(PROBLEM))
   };
+  function deleteInterview(id) {
+    transition(DELETING)
+    cancelInterview(id)
+      .then((res) => {
+        if(res) {
+          return transition(EMPTY);
+        }
+        transition(PROBLEM);
+      })
+      .catch(() => transition(PROBLEM))
+  }
 
   return (
     <article className="appointment">
@@ -57,19 +71,21 @@ const Appointment = function(props) {
       <Show
       student={interview.student}
       interviewer={interview.interviewer}
-      onDelete={() => console.log(`Clicked onDelete`)}
+      onDelete={onDelete}
       onEdit={() => console.log(`Clicked onEdit`)}
       />}
       {mode === CREATE &&
       <Form interviewers={[]}
       onSave={save}
-      onCancel={() => {
-        back();
-      }} />}
+      onCancel={deleteInterview} />}
       {mode === SAVING &&
-      <Status />}
+      <Status message={"Saving"} />}
       {mode === PROBLEM &&
       <Error />}
+      {mode === DELETING &&
+      <Status message={"Deleting"} />}
+      {mode === CONFIRM &&
+      <Confirm />}
     </article>
   );
 }
