@@ -45,7 +45,8 @@ export default function Application(props) {
       ...state.appointments,
       [id]: appointment
     };
-    return axios.put(`/api/appointments/${id}`, interview)
+    return (
+      axios.put(`/api/appointments/${id}`, interview)
       .then(res => {
         setState({...state, appointments})
         return res;
@@ -54,6 +55,7 @@ export default function Application(props) {
         console.log(error.response)
         return null;
       })
+    )
   };
   function cancelInterview(id) {
     const appointment = {

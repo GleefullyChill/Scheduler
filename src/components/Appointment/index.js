@@ -71,21 +71,21 @@ const Appointment = function(props) {
       <Show
       student={interview.student}
       interviewer={interview.interviewer}
-      onDelete={onDelete}
+      onDelete={() => transition(CONFIRM)}
       onEdit={() => console.log(`Clicked onEdit`)}
       />}
       {mode === CREATE &&
       <Form interviewers={[]}
       onSave={save}
-      onCancel={deleteInterview} />}
+      onCancel={() => console.log("clicked cancel")} />}
       {mode === SAVING &&
       <Status message={"Saving"} />}
       {mode === PROBLEM &&
-      <Error />}
+      <Error onClose={() => back} />}
       {mode === DELETING &&
       <Status message={"Deleting"} />}
       {mode === CONFIRM &&
-      <Confirm />}
+      <Confirm onCancel={() => transition(SHOW)} onConfirm={deleteInterview} message="Are you sure you would like to delete?" />}
     </article>
   );
 }
