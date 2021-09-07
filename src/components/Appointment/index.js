@@ -20,8 +20,6 @@ import "components/Appointment/styles.scss";
 const Appointment = function(props) {
   const { time, interview, interviewers, cancelInterview, bookInterview, id } = props;
 
-  
-
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
@@ -44,20 +42,21 @@ const Appointment = function(props) {
         if(res) {
           return transition(SHOW);
         }
-        transition(ERROR_SAVE);
+        transition(ERROR_SAVE, true);
       })
-      .catch(() => transition(ERROR_SAVE))
+      .catch(() => transition(ERROR_SAVE, true))
   };
-  function deleteInterview(id) {
+  function deleteInterview() {
+    
     transition(DELETING)
     cancelInterview(id)
       .then((res) => {
         if(res) {
           return transition(EMPTY);
         }
-        transition(ERROR_DELETE);
+        transition(ERROR_DELETE, true);
       })
-      .catch(() => transition(ERROR_DELETE))
+      .catch(() => transition(ERROR_DELETE, true))
   }
 
   return (
@@ -97,8 +96,8 @@ const Appointment = function(props) {
       {mode === ERROR_DELETE &&
       <Error onClose={() => back} message="Could not delete the interview" />}
 
-      {mode === ERROR_SAVING &&
-      <Error onClose={() => back} message="Could not save the interview" />}
+      {mode === ERROR_SAVE &&
+      <Error onClose={() => console.log(back)} message="Could not save the interview" />}
 
       {mode === DELETING &&
       <Status message={"Deleting"} />}

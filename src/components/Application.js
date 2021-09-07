@@ -46,9 +46,10 @@ export default function Application(props) {
       [id]: appointment
     };
     return (
-      axios.put(`/api/appointments/${id}`, interview)
+      axios.put(`/api/appointments/${id}`, {interview})
       .then(res => {
         setState({...state, appointments})
+        console.log(res)
         return res;
       })
       .catch((error) => {
@@ -83,6 +84,7 @@ export default function Application(props) {
   const schedule = dailyAppointments.map(appointmentItem => {
     const interview = getInterview(state, appointmentItem.interview)
     const interviewers = Object.values(state.interviewers);
+    console.log({...appointmentItem})
     return <Appointment
       key={appointmentItem.id}
       {...appointmentItem}
@@ -92,7 +94,7 @@ export default function Application(props) {
       cancelInterview={cancelInterview}
       />
   })
-  console.log(schedule)
+ 
  
 
   return (

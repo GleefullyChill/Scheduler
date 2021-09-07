@@ -25,7 +25,6 @@ const Form = function(props) {
     onSave(name, interviewer);
   }
 
-  console.log(props.student)
 
   return (
     <main className="appointment__card appointment__card--create">
