@@ -29,24 +29,25 @@ const getInterview = function(state, interviewData) {
   return interview;
 }
 
-const getInterviewsForDay = function(state, day) {
-  let interviewsForDay;
+const getInterviewersForDay = function(state, day) {
+  let interviewersForDay;
 
   for (const daysOfState of state.days) {
     if (daysOfState.name === day) {
-      interviewsForDay = daysOfState.appointments.map(id => {
+      interviewersForDay = daysOfState.interviewers.map(id => {
 
-        const interview = getInterview(state, state.appointments[id].interview)
-        const interviewOfAppointment = {...state.appointments[id], interview}
 
-        return interviewOfAppointment;
+
+        const interviewer = state.interviewers[id];
+
+        return interviewer;
       
       })
-      return interviewsForDay;
+      return interviewersForDay;
     }
   }
-  return (interviewsForDay ? interviewsForDay : []); 
+  return (interviewersForDay ? interviewersForDay : []); 
 }
 
 
-export { getAppointmentsForDay, getInterviewsForDay, getInterview }
+export { getAppointmentsForDay, getInterviewersForDay, getInterview }

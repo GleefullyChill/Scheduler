@@ -21,10 +21,11 @@ const useVisualMode = function (initial) {
   }
   
   const back = function() {
+    console.log("here: ", history, "mode: ", mode)
     if (history.length === 1) {
       return;
     }
-    console.log("here: ", history, "mode: ", mode)
+    
     setMode(history.slice( - 2)[0])
     setHistory(prev => {
       return [...prev].slice(0, history.length -1)
