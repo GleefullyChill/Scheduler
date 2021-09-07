@@ -92,7 +92,7 @@ export default function Application(props) {
       cancelInterview={cancelInterview}
       />
   })
-
+  console.log(schedule)
  
 
   return (
