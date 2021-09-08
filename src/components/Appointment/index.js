@@ -87,17 +87,17 @@ const Appointment = function(props) {
       onSave={save}
       onCancel={() => transition(SHOW)}
       name={interview.student}
-      interviewer={interview.interviewer.id}
+      interviewer={interview.interviewer ? interview.interviewer.id : 0}
       />}
 
       {mode === SAVING &&
       <Status message={"Saving"} />}
 
       {mode === ERROR_DELETE &&
-      <Error onClose={() => back} message="Could not delete the interview" />}
+      <Error onClose={back} message="Could not delete the interview" />}
 
       {mode === ERROR_SAVE &&
-      <Error onClose={() => console.log(back)} message="Could not save the interview" />}
+      <Error onClose={back} message="Could not save the interview" />}
 
       {mode === DELETING &&
       <Status message={"Deleting"} />}
