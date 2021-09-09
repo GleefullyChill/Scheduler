@@ -5,12 +5,12 @@ An intense 1st React App, doesn't even come close to describing this project. I'
 
 ## Screenshots
 
-
-
-
-
-
-
+!["Homepage"]
+-
+!["Form Before Saving"]
+-
+!["Confirmation Before Deleting"]
+-
 
 ## Setup
 
