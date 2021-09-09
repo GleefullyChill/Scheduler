@@ -10,7 +10,7 @@ const Empty = function(props) {
   const { onAdd } = props;
   
   return (
-    <main className="appointment__add">
+    <main className="appointment__add" data-testid="add">
       <img
         className="appointment__add-button"
         src="images/add.png"

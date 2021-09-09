@@ -10,7 +10,7 @@ const InterviewerListItem = function(props) {
 
   const { name, avatar, selected, onChange } = props;
 
-  const interviewerClass = "interviewers__item" + classNames({"--selected" : selected});
+  const interviewerClass = 'interviewers__item' + classNames({'--selected' : selected});
 
   return (
     <li className={interviewerClass} onClick={onChange}>

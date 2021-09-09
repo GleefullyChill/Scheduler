@@ -60,18 +60,23 @@ const Form = function(props) {
         <InterviewerList
         interviewers={interviewers}
         interviewer={interviewer}
-        onChange={setInterviewer} />
+        onChange={setInterviewer}
+        data-testid="interviewer-avatar"
+        />
       </section>
 
       <section className="appointment__card-right">
         <section className="appointment__actions">
           <Button
           onClick={() => cancel()}
-          danger>Cancel
+          danger
+          >Cancel
           </Button>
           <Button
           onClick={validate}
-          confirm>Save
+          confirm
+          data-testid="save"
+          >Save
           </Button>
         </section>
       </section>

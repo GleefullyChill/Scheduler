@@ -28,7 +28,7 @@ const useApplicationData = function() {
       .catch((error) => {
         console.log(error.response);
       })
-  },[state]);
+  },[]);
 
   // all state update related functions for application below
   const setDay = function(day) {
