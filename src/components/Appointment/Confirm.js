@@ -2,9 +2,10 @@
 
 
 import React from "react";
-import Button from "components/Button";
 
-import "components/Appointment/styles.scss";
+import Button from "../Button";
+
+import "./styles.scss";
 
 const Confirm = function(props) {
   const { message, onConfirm, onCancel } = props;
@@ -17,7 +18,7 @@ const Confirm = function(props) {
         <Button onClick={onConfirm} danger>Confirm</Button>
       </section>
     </main>
-  )
-}
+  );
+};
 
 export default Confirm;

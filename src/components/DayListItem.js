@@ -1,14 +1,19 @@
+
+
+
 import React from "react";
 import classNames from "classnames";
 
-import "components/DayListItem.scss"
+import "./DayListItem.scss";
 
-export default function DayListItem(props) {
+const DayListItem = function(props) {
+
   const { spots, name, onChange, selected } = props;
+  
   const dayClass = "day-list__item" + classNames({
     "--selected": selected,
     "--full": (spots === 0)
-  })
+  });
  
   return (
     <li onClick={onChange} className={dayClass}>
@@ -18,6 +23,7 @@ export default function DayListItem(props) {
       {spots > 1 && <h3 className="text--light">{spots} spots remaining</h3>}
     </li>
   );
-}
+};
 
 
+export default DayListItem;

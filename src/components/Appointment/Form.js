@@ -3,13 +3,16 @@
 
 import React, { useState } from "react";
 
-import InterviewerList from "components/InterviewerList";
-import Button from "components/Button";
+import InterviewerList from "../InterviewerList";
+import Button from "../Button";
 
-import "components/Appointment/styles.scss";
+import "./styles.scss";
 
 const Form = function(props) {
+
   const { interviewers, onSave, onCancel } = props;
+
+  // || null is used to satisfy a given Jest test, but preference would be to validate interviewer or use 0
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [name, setName] = useState(props.name || "");
   const [error, setError] = useState("");
@@ -73,7 +76,7 @@ const Form = function(props) {
         </section>
       </section>
     </main>
-  )
-}
+  );
+};
 
 export default Form;

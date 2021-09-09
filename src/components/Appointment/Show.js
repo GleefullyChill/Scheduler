@@ -2,9 +2,11 @@
 
 
 import React from "react";
-import "components/Appointment/styles.scss"
+
+import "./styles.scss";
 
 const Show = function(props) {
+
   const { student, interviewer, onEdit, onDelete } = props;
   
   return (
@@ -33,7 +35,7 @@ const Show = function(props) {
         </section>
       </section>
     </main>
-  )
-}
+  );
+};
 
 export default Show;

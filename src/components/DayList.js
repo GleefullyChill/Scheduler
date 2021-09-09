@@ -1,6 +1,8 @@
+
+
+
 import DayListItem from "./DayListItem";
 import React from "react";
-
 
 
 const DayList = function(props) {
@@ -12,13 +14,13 @@ const DayList = function(props) {
     spots={day.spots}
     selected={day.name === props.day}
     onChange={onChange} />
-  })
+  });
   return (
     <ul>
       {days}
     </ul>
-  )
-}
+  );
+};
 
 
 

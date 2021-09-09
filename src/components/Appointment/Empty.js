@@ -2,9 +2,11 @@
 
 
 import React from "react";
-import "components/Appointment/styles.scss";
+
+import "./styles.scss";
 
 const Empty = function(props) {
+
   const { onAdd } = props;
   
   return (
@@ -16,7 +18,7 @@ const Empty = function(props) {
         onClick={onAdd}
       />
     </main>
-  )
-}
+  );
+};
 
 export default Empty;

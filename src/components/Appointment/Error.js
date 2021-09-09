@@ -2,9 +2,11 @@
 
 
 import React from "react";
-import "components/Appointment/styles.scss";
+
+import "./styles.scss";
 
 const Error = function(props) {
+  
   const { message, onClose } = props;
   
   return (
@@ -20,7 +22,7 @@ const Error = function(props) {
         onClick={onClose}
       />
     </main>
-  )
-}
+  );
+};
 
 export default Error;

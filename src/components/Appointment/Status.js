@@ -2,9 +2,11 @@
 
 
 import React from "react";
-import "components/Appointment/styles.scss";
+
+import "./styles.scss";
 
 const Status = function(props) {
+
   const { message } = props;
   
   return (
@@ -16,7 +18,7 @@ const Status = function(props) {
       />
       <h1 className="text--semi-bold">{message}</h1>
     </main>
-  )
-}
+  );
+};
 
 export default Status;
