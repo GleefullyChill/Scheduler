@@ -68,7 +68,7 @@ const Form = function(props) {
       <section className="appointment__card-right">
         <section className="appointment__actions">
           <Button
-          onClick={() => cancel()}
+          onClick={cancel}
           danger
           >Cancel
           </Button>

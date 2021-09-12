@@ -15,9 +15,6 @@ import useVisualMode from "hooks/useVisualMode";
 
 import "./styles.scss";
 
-
-
-
 const Appointment = function(props) {
 
   const { time, interview, interviewers, cancelInterview, bookInterview, id } = props;
