@@ -50,15 +50,15 @@ or simply update package.json to use your preferred proxy
 
 ## Dependencies
 
-Axios
-Classnames
-Prop-Types
-React
+Axios,
+Classnames,
+Prop-Types,
+React,
 React-Scripts
 
 ## Test Dependencies
 
-Cypress (install separtately)
-Storybook
-React-Test-Renderer
+Cypress (install separtately),
+Storybook,
+React-Test-Renderer,
 React-Hooks-Testing-Library
