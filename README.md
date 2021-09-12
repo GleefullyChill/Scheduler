@@ -5,12 +5,12 @@ An intense 1st React App, doesn't even come close to describing this project. I'
 
 ## Screenshots
 
-
-
-
-
-
-
+!["Homepage"](https://github.com/GleefullyChill/Scheduler/blob/master/public/docs/homepage.png)
+-
+!["Form Before Saving"](https://github.com/GleefullyChill/Scheduler/blob/master/public/docs/Filled-Form.png)
+-
+!["Confirmation Before Deleting"](https://github.com/GleefullyChill/Scheduler/blob/master/public/docs/Deleting-Confirmation.png)
+-
 
 ## Setup
 
