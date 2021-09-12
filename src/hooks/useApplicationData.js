@@ -39,7 +39,7 @@ const useApplicationData = function() {
   };
 
   // used in both bookInterview and cancelInterview below
-  const updateSpots = function(appointmentId) {
+  const updateSpots = function(appointmentId, isBooking) {
 
     const newDaysArray = state.days.map(day => {
       if (day.name === state.day) {
@@ -47,6 +47,10 @@ const useApplicationData = function() {
           // checks current state, before the appointment is booking or cancelling, so if it's null you are booking, thus less spots
           const spots = day.spots - 1;
           return {...day, spots};
+        }
+        // if editing, you will have a false positive, but spots will not actually change
+        if (isBooking) {
+          return {...day}
         }
         const spots = day.spots + 1;
         return {...day, spots};
@@ -72,7 +76,7 @@ const useApplicationData = function() {
     return (
       axios.put(`/api/appointments/${id}`, {interview})
       .then(res => {
-        const days = updateSpots(id);
+        const days = updateSpots(id, true);
         setState(prev => {
           return {...prev, appointments, days};
         });
@@ -99,7 +103,7 @@ const useApplicationData = function() {
     };
     return axios.delete(`api/appointments/${id}`)
       .then(res => {
-        const days = updateSpots(id);
+        const days = updateSpots(id, false);
         setState(prev => {
           return {...prev, appointments, days}
         });
