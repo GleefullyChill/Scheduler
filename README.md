@@ -52,13 +52,13 @@ or simply update package.json to use your preferred proxy
 
 Axios
 Classnames
-Prop Types
+Prop-Types
 React
-React Scripts
+React-Scripts
 
 ## Test Dependencies
 
 Cypress (install separtately)
 Storybook
-React Test Renderer
-React Hooks Testing Library
+React-Test-Renderer
+React-Hooks-Testing-Library
